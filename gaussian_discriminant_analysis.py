@@ -8,10 +8,10 @@ def fit(x, y, n_dimensions):
     n_features = x.shape[1]
     class_labels = np.unique(y)
 
-    # uzimamo srednju vrednost svih feature-a
+    # Standardising data
     mean_overall = np.mean(x, axis=0)
 
-    # definisemo unutar-klasne i medjuklasne kovarijacione matrice
+    # Covariance matrices
     sw = np.zeros((n_features, n_features))
     sb = np.zeros((n_features, n_features))
 
@@ -52,7 +52,7 @@ classes = np.unique(Y)
 linear_discriminants = fit(X, Y, 2)
 X_reduced = transform(X, linear_discriminants)
 
-# sada feature matricu sa manjom dimenzionalnoscu mozemo iskoristiti kao ulaz drugog klasifikatora
+# Using reduced feature matrix as input into another classifier
 X_train, X_test, Y_train, Y_test = train_test_split(X_reduced, Y, train_size=0.95, shuffle=False)
 
 means, variances, priors = naive_bayes.fit(X_train, Y_train, classes)
@@ -64,7 +64,7 @@ naive_bayes.accuracy(Y_test, y_prediction)
 x1 = X_reduced[:, 0]
 x2 = X_reduced[:, 1]
 
-# prikazivanje klasifikovanog sadrzaja u 2d
+# Plotting 2D data
 plt.scatter(x1, x2,
             c=Y, edgecolor='none', alpha=0.8,
             cmap=plt.cm.get_cmap('viridis', 3))
