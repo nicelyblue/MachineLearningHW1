@@ -14,7 +14,7 @@ Y = (Y - np.mean(Y)) / np.std(Y)
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, train_size=0.95, shuffle=False)
 
-# Procena stepena polinoma za regresiju metodom krosvalidacije
+# Estimation of polynomial degree using x-validation
 
 number_of_folds = 5
 step = int(X_train.shape[0] / number_of_folds)
@@ -63,7 +63,7 @@ plt.fill_between(degrees, test_scores_mean - test_scores_std,
 plt.legend(loc="best")
 plt.show()
 
-# Rezultat ovog dela nagovestava da treba koristiti stepen 3, sledi regularizacija
+# Polynomial degree == 3
 
 mean_squared_error_test_regularisation = []
 
@@ -100,7 +100,7 @@ plt.fill_between(alphas, test_scores_mean - test_scores_std,
 plt.legend(loc="best")
 plt.show()
 
-# Rezultat izvrsavanja ovog dela nagovestava da se moze izabrati alpha odnosno lambda = 0.1
+# Lambda == 0.9
 
 poly_features = PolynomialFeatures(degree=3)
 X_poly = poly_features.fit_transform(X_test)
