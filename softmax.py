@@ -51,7 +51,6 @@ def predict_class(x, theta):
 
 
 def one_hot_encoder(y):
-    # enkodira labele u izlaz koji odgovara izlazu softmax regresora
     shape = (y.size, y.max() + 1)
     one_hot = np.zeros(shape)
     rows = np.arange(y.size)
